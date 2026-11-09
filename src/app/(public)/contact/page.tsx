@@ -66,9 +66,9 @@ export default function ContactPage() {
 
           <aside className="space-y-3">
             {[
-              { icon: Mail, label: "Email", value: "hello@ticketaar.ng" },
-              { icon: Phone, label: "Phone", value: "+234 801 234 5678" },
-              { icon: MapPin, label: "Office", value: "294 Herbert Macaulay Way, Yaba, Lagos" },
+              { icon: Mail, label: "Email", value: "info.ticketaar@gmail.com" },
+              { icon: Phone, label: "Phone", value: "07010301024" },
+              { icon: MapPin, label: "Office", value: "Asokoro, Abuja, Nigeria" },
             ].map(({ icon: Icon, label, value }) => (
               <div key={label} className="card-surface p-4">
                 <span className="grid size-9 place-items-center rounded-lg bg-brand-50 text-brand-600">

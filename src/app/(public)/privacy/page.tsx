@@ -26,7 +26,7 @@ const sections = [
   },
   {
     title: "Your rights",
-    body: "You can request a copy of your data, ask us to correct it, or ask us to delete data we no longer have a legal reason to keep. Email hello@ticketaar.ng and we will respond within 30 days.",
+    body: "You can request a copy of your data, ask us to correct it, or ask us to delete data we no longer have a legal reason to keep. Email info.ticketaar@gmail.com and we will respond within 30 days.",
   },
   {
     title: "Cookies",

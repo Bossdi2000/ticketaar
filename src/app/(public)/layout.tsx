@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
 import { MobileNav } from "@/components/layout/mobile-nav";
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
@@ -10,9 +9,6 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
         <Header />
       </Suspense>
       <main className="flex-1 pb-20 lg:pb-0">{children}</main>
-      <div className="pb-20 lg:pb-0">
-        <Footer />
-      </div>
       <Suspense fallback={null}>
         <MobileNav />
       </Suspense>

@@ -57,15 +57,19 @@ export function Footer() {
             <div className="mt-5 space-y-2 text-sm text-muted">
               <p className="flex items-center gap-2">
                 <MapPin className="size-4 text-brand-600" />
-                Yaba, Lagos, Nigeria
+                Asokoro, Abuja, Nigeria
               </p>
               <p className="flex items-center gap-2">
                 <Mail className="size-4 text-brand-600" />
-                hello@ticketaar.ng
+                <a href="mailto:info.ticketaar@gmail.com" className="hover:text-brand-700">
+                  info.ticketaar@gmail.com
+                </a>
               </p>
               <p className="flex items-center gap-2">
                 <Phone className="size-4 text-brand-600" />
-                +234 801 234 5678
+                <a href="tel:07010301024" className="hover:text-brand-700">
+                  07010301024
+                </a>
               </p>
             </div>
           </div>

@@ -42,6 +42,7 @@ import { Badge } from "@/components/ui/badge";
 import { formatMoney } from "@/lib/utils";
 import { HeroStagger, HeroItem, Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { CountUp, FloatIn, ParallaxImage } from "@/components/motion/advanced";
+import { Footer } from "@/components/layout/footer";
 
 const CITIES = ["Lagos", "Abuja", "Ibadan", "Port Harcourt", "Lekki", "Ikeja"];
 
@@ -106,14 +107,7 @@ export default function HomePage() {
           <HeroStagger>
             <div className="mx-auto max-w-3xl text-center lg:mx-0 lg:text-left">
               <HeroItem>
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold text-brand-100 backdrop-blur">
-                  <Sparkles className="size-3.5 text-pink-300" />
-                  1,240 events live across Nigeria
-                </span>
-              </HeroItem>
-
-              <HeroItem>
-                <h1 className="mt-5 text-[2.6rem] font-extrabold leading-[1.02] text-white sm:text-6xl lg:text-7xl">
+                <h1 className="text-[2.6rem] font-extrabold leading-[1.02] text-white sm:text-6xl lg:text-7xl">
                   Discover Amazing
                   <span className="block bg-gradient-to-r from-pink-300 via-white to-brand-200 bg-clip-text text-transparent">
                     Events
@@ -817,6 +811,8 @@ export default function HomePage() {
           </div>
         </Reveal>
       </section>
+
+      <Footer />
     </>
   );
 }

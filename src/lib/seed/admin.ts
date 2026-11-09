@@ -57,7 +57,7 @@ export const PLATFORM_SETTINGS = {
   fixedFee: 100,
   paymentProvider: "Paystack",
   emailProvider: "Resend",
-  supportEmail: "hello@ticketaar.ng",
+  supportEmail: "info.ticketaar@gmail.com",
   maintenanceMode: false,
   moderation: true,
   currency: "NGN",
