@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  BadgeCheck,
   CalendarDays,
   Compass,
   MapPin,
@@ -17,13 +16,12 @@ import {
   PartyPopper as PartyIcon,
   Search,
   Sparkles,
-  Star,
 } from "lucide-react";
 import { EVENTS, CATEGORIES } from "@/lib/seed/events";
 import { EventCard } from "@/components/events/event-card";
 import { SectionHeading } from "@/components/layout/page";
 import { LinkButton } from "@/components/ui/button";
-import { HeroStagger, HeroItem, Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
+import { HeroStagger, HeroItem, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { Footer } from "@/components/layout/footer";
 
 const CITIES = ["Lagos", "Abuja", "Ibadan", "Port Harcourt", "Lekki", "Ikeja"];
@@ -154,26 +152,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* --------------------------- Trust ribbon --------------------------- */}
-      <section className="border-b border-line bg-white" aria-label="Trusted by">
-        <div className="container-page flex flex-wrap items-center justify-center gap-x-6 gap-y-2 py-4">
-          <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-muted">
-            Trusted by organisers at
-          </p>
-          {["Eko Convention Centre", "Landmark Events", "Muson Centre"].map((name) => (
-            <span
-              key={name}
-              className="flex items-center gap-1.5 text-xs font-semibold text-ink/60 sm:text-sm"
-            >
-              <BadgeCheck className="size-4 text-pink-500" />
-              {name}
-            </span>
-          ))}
-        </div>
-      </section>
-
       {/* ---------------------------- Upcoming ------------------------------ */}
-      <section className="container-page py-10 sm:py-14">
+      <section className="container-page py-8 sm:py-12">
         <SectionHeading
           title="Upcoming events"
           description="The events on sale right now."
@@ -189,10 +169,10 @@ export default function HomePage() {
       </section>
 
       {/* ---------------------------- Categories ---------------------------- */}
-      <section className="container-page pb-10 sm:pb-14">
+      <section className="container-page pb-12 sm:pb-16">
         <SectionHeading title="Browse by category" href="/events" linkLabel="All categories" />
-        <Stagger className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {CATEGORIES.slice(0, 12).map((category) => (
+        <Stagger className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {CATEGORIES.slice(0, 4).map((category) => (
             <StaggerItem key={category.name}>
               <Link
                 href={`/events?category=${encodeURIComponent(category.name)}`}
@@ -209,36 +189,6 @@ export default function HomePage() {
             </StaggerItem>
           ))}
         </Stagger>
-      </section>
-
-      {/* ------------------------------ Final CTA --------------------------- */}
-      <section className="container-page pb-4">
-        <Reveal>
-          <div className="brand-gradient-pink relative overflow-hidden rounded-3xl px-6 py-10 text-center shadow-glow-strong sm:px-10 sm:py-12">
-            <div className="grid-texture absolute inset-0 opacity-20" aria-hidden="true" />
-            <div className="relative">
-              <Star className="mx-auto size-7 text-white/90" />
-              <h2 className="mt-3 text-xl font-extrabold text-white sm:text-2xl">
-                Ready for your next night out?
-              </h2>
-              <p className="mx-auto mt-2 max-w-md text-sm text-white/85">
-                One ticket, all access. Browse what is happening near you tonight.
-              </p>
-              <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <LinkButton href="/events" variant="white" size="lg">
-                  Explore events
-                </LinkButton>
-                <LinkButton
-                  href="/tickets/retrieve"
-                  size="lg"
-                  className="border border-white/30 bg-transparent text-white shadow-none hover:bg-white/10"
-                >
-                  Retrieve my tickets
-                </LinkButton>
-              </div>
-            </div>
-          </div>
-        </Reveal>
       </section>
 
       <Footer />

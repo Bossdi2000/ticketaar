@@ -3,11 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { Search, Ticket, LogIn, Zap, Sparkles } from "lucide-react";
+import { Search, Ticket, LogIn, Zap } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 import { LinkButton } from "@/components/ui/button";
 import { cn, initials } from "@/lib/utils";
-import { TICKER_ITEMS } from "@/lib/seed/events";
 import { useCart, cartCount, useDb } from "@/lib/store";
 
 const NAV = [
@@ -171,37 +170,6 @@ export function Header() {
           </div>
         </div>
       </div>
-
-      <div className="hidden lg:block">
-        <LiveTicker />
-      </div>
     </header>
-  );
-}
-
-function LiveTicker() {
-  const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
-  return (
-    <div className="overflow-hidden border-b border-brand-900/10 bg-brand-950 text-white">
-      <div className="flex h-9 items-center">
-        <span className="relative z-10 flex h-full shrink-0 items-center gap-1.5 bg-brand-600 px-3 text-[0.68rem] font-bold uppercase tracking-wider">
-          <span className="relative flex size-1.5">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-white opacity-75" />
-            <span className="relative inline-flex size-1.5 rounded-full bg-white" />
-          </span>
-          Live
-        </span>
-        <div className="relative flex-1 overflow-hidden">
-          <div className="flex w-max animate-ticker items-center gap-8 whitespace-nowrap px-6 text-xs text-brand-100">
-            {items.map((item, index) => (
-              <span key={`${item}-${index}`} className="flex items-center gap-2">
-                <Sparkles className="size-3 text-pink-300" aria-hidden="true" />
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }

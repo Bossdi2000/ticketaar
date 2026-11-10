@@ -1,26 +1,29 @@
 import { cn } from "@/lib/utils";
 
-export function TicketMark({
-  className,
-  detail = "light",
-}: {
-  className?: string;
-  detail?: "light" | "dark";
-}) {
-  const details = detail === "dark" ? "#1A0044" : "#FFFFFF";
+/**
+ * Ticket outline with a dotted perforation, matching the brand mark.
+ * Drawn with strokes so it stays crisp at any size and inherits colour.
+ */
+export function TicketMark({ className }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 48 32"
+      viewBox="0 0 58 38"
       fill="none"
       aria-hidden="true"
       className={cn("h-8 w-12", className)}
     >
-      <rect x="1" y="1" width="46" height="30" rx="7" fill="currentColor" />
-      <path d="M24 3v26" stroke={details} strokeWidth="2" strokeDasharray="2 3" opacity="0.9" />
-      <circle cx="10.5" cy="16" r="3" fill={details} />
       <path
-        d="M35 10.5l1.7 3.6 3.6 1.7-3.6 1.7L35 21.1l-1.7-3.6-3.6-1.7 3.6-1.7L35 10.5Z"
-        fill={details}
+        d="M7.5 1H50.5C54.09 1 57 3.91 57 7.5V12.5C54.24 12.5 52 14.74 52 17.5C52 20.26 54.24 22.5 57 22.5V28.5C57 32.09 54.09 35 50.5 35H7.5C3.91 35 1 32.09 1 28.5V22.5C3.76 22.5 6 20.26 6 17.5C6 14.74 3.76 12.5 1 12.5V7.5C1 3.91 3.91 1 7.5 1Z"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M20.5 5V31"
+        stroke="var(--mark-accent, #6500E8)"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeDasharray="0.1 5"
       />
     </svg>
   );
@@ -38,21 +41,24 @@ export function Logo({
   inverted?: boolean;
 }) {
   const dims = {
-    sm: { mark: "h-6 w-9", text: "text-lg" },
-    md: { mark: "h-8 w-12", text: "text-2xl" },
-    lg: { mark: "h-11 w-16", text: "text-4xl" },
+    sm: { mark: "h-[1.15rem] w-[1.75rem]", text: "text-[1.28rem]" },
+    md: { mark: "h-7 w-[2.65rem]", text: "text-[1.85rem]" },
+    lg: { mark: "h-9 w-[3.4rem]", text: "text-[2.6rem]" },
   }[size];
 
   return (
-    <span className={cn("inline-flex items-center gap-2", className)}>
-      <TicketMark
-        className={cn(dims.mark, inverted ? "text-white" : "text-brand-600")}
-        detail={inverted ? "dark" : "light"}
-      />
+    <span
+      className={cn(
+        "inline-flex items-center gap-1.5",
+        inverted ? "text-white [--mark-accent:#C9A6FF]" : "text-ink",
+        className,
+      )}
+    >
+      <TicketMark className={cn(dims.mark, "shrink-0")} />
       <span className="flex flex-col leading-none">
         <span
           className={cn(
-            "font-display font-extrabold tracking-tight",
+            "font-display font-extrabold tracking-[-0.03em]",
             dims.text,
             inverted ? "text-white" : "text-ink",
           )}
@@ -60,8 +66,8 @@ export function Logo({
           Ticketaar
           <sup
             className={cn(
-              "ml-0.5 align-super text-[0.4em] font-bold",
-              inverted ? "text-brand-300" : "text-muted",
+              "ml-0.5 align-super text-[0.3em] font-bold tracking-normal",
+              inverted ? "text-brand-300" : "text-ink",
             )}
           >
             ™
