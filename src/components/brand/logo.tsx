@@ -57,8 +57,7 @@ export function Logo({
             inverted ? "text-white" : "text-ink",
           )}
         >
-          Ticket
-          <span className={inverted ? "text-pink-300" : "text-brand-600"}>aar</span>
+          Ticketaar
           <sup
             className={cn(
               "ml-0.5 align-super text-[0.4em] font-bold",

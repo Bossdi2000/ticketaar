@@ -1,32 +1,5 @@
-import type { EventItem, TicketType } from "@/lib/types";
+import type { EventItem } from "@/lib/types";
 import type { SellerAccount } from "@/lib/store";
-
-const img = (id: string, w = 1000) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
-
-function ticket(
-  id: string,
-  name: string,
-  kind: TicketType["kind"],
-  price: number,
-  quantity: number,
-  sold: number,
-  description: string,
-  maxPerCustomer = 6,
-): TicketType {
-  return {
-    id,
-    name,
-    description,
-    price,
-    quantity,
-    sold,
-    maxPerCustomer,
-    kind,
-    salesStart: "2026-09-01T09:00:00+01:00",
-    salesEnd: "2026-12-20T23:59:00+01:00",
-  };
-}
 
 export const DEMO_SELLER: SellerAccount = {
   id: "seller-demo",
@@ -37,70 +10,7 @@ export const DEMO_SELLER: SellerAccount = {
   verified: true,
 };
 
-export const SELLER_EVENT_EXTRAS: EventItem[] = [
-  {
-    id: "evt-pulse-draft",
-    slug: "pulse-rooftop-sessions",
-    title: "Pulse Rooftop Sessions",
-    category: "Music",
-    description:
-      "An intimate rooftop series with three live acts and a sunset set. Capacity is deliberately small so the sound stays clean.",
-    terms: "Strictly 18+. No outside drinks. Doors close at 8pm.",
-    cover: img("1470225620780-dba8ba36b745"),
-    gallery: [],
-    startDate: "2027-01-09T17:00:00+01:00",
-    endDate: "2027-01-09T23:00:00+01:00",
-    timezone: "Africa/Lagos (WAT)",
-    venue: "Noldor Rooftop",
-    address: "4A Akin Adesola Street, Victoria Island",
-    city: "Lagos",
-    state: "Lagos",
-    country: "Nigeria",
-    online: false,
-    organizer: { id: "org-pulse", name: "Pulse Live Africa", verified: true, events: 24 },
-    status: "draft",
-    featured: false,
-    trending: false,
-    transfersEnabled: true,
-    refundPolicy: "Full refund up to 7 days before the event.",
-    createdAt: "2026-11-06T10:00:00+01:00",
-    ticketTypes: [
-      ticket("tt-prs-regular", "Regular", "general", 18000, 150, 0, "Standing access to the rooftop."),
-      ticket("tt-prs-vip", "VIP Table", "vip", 120000, 12, 0, "Reserved table for four with bottle service.", 2),
-    ],
-  },
-  {
-    id: "evt-pulse-pending",
-    slug: "pulse-year-end-party",
-    title: "Pulse Year-End Party",
-    category: "Parties",
-    description:
-      "The team closes the year with a members-only party: two DJs, a live percussion set and a late kitchen.",
-    terms: "Members and one guest only. Strictly 21+.",
-    cover: img("1519671482749-fd09be7ccebf"),
-    gallery: [],
-    startDate: "2026-12-30T21:00:00+01:00",
-    endDate: "2026-12-31T04:00:00+01:00",
-    timezone: "Africa/Lagos (WAT)",
-    venue: "The Good Beach, Ikoyi",
-    address: "1 Oyinkan Abayomi Drive, Ikoyi",
-    city: "Lagos",
-    state: "Lagos",
-    country: "Nigeria",
-    online: false,
-    organizer: { id: "org-pulse", name: "Pulse Live Africa", verified: true, events: 24 },
-    status: "pending",
-    featured: false,
-    trending: false,
-    transfersEnabled: true,
-    refundPolicy: "Non-refundable inside 72 hours.",
-    createdAt: "2026-11-05T10:00:00+01:00",
-    ticketTypes: [
-      ticket("tt-pyp-regular", "Regular", "general", 25000, 300, 0, "Standing entry."),
-      ticket("tt-pyp-vip", "VIP Booth", "vip", 200000, 15, 0, "Booth for six with two bottles.", 1),
-    ],
-  },
-];
+export const SELLER_EVENT_EXTRAS: EventItem[] = [];
 
 export interface SaleRecord {
   id: string;
@@ -135,8 +45,6 @@ const BUYERS = [
 
 const EVENT_POOL = [
   { id: "evt-alte-beats", title: "Altè Beats Concert", types: ["Regular", "VIP Access", "Table for 4"] },
-  { id: "evt-founders-night", title: "Founders Night Lagos", types: ["Standard", "Plus One"] },
-  { id: "evt-afrobeats-live", title: "Afrobeats Live Experience", types: ["Balcony", "Stalls", "Premium Circle"] },
 ];
 
 function buildSales(): SaleRecord[] {
@@ -151,7 +59,7 @@ function buildSales(): SaleRecord[] {
     const event = EVENT_POOL[index % EVENT_POOL.length];
     const type = event.types[Math.floor(random() * event.types.length)];
     const quantity = 1 + Math.floor(random() * 4);
-    const unit = type === "Table for 4" ? 350000 : type === "VIP Access" ? 65000 : type === "Plus One" ? 50000 : type === "Premium Circle" ? 95000 : type === "Stalls" ? 45000 : type === "Balcony" ? 22000 : 25000;
+    const unit = type === "Table for 4" ? 350000 : type === "VIP Access" ? 65000 : 25000;
     const amount = unit * quantity;
     const status: SaleRecord["status"] =
       index % 17 === 0 ? "failed" : index % 11 === 0 ? "pending" : "successful";
